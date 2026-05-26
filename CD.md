@@ -58,7 +58,6 @@ classDiagram
         -최대용량: int = 10
         -아이템목록: List<아이템>
         +아이템추가(아이템객체: 아이템) boolean
-        +현재개수() int
     }
 
     %% Composition: 인벤토리 삭제 시 함께 삭제됨
@@ -76,7 +75,6 @@ classDiagram
         -최대정원: int = 5
         -길드원목록: List<캐릭터>
         +길드원추가(캐릭터객체: 캐릭터) boolean
-        +현재원() int
     }
 
     %% Relationships
