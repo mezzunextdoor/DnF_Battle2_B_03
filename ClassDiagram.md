@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     direction TB
 
@@ -113,3 +114,4 @@ classDiagram
     전투 ..> 플레이어 : 플레이어체크 검증
     전투 ..> 캐릭터 : 아이템추가 호출
     전투 ..> 길드 : 캐릭터가입 호출
+```
