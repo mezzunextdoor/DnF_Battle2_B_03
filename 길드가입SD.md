@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     autonumber
     actor Player as "플레이어"
@@ -29,3 +30,4 @@ sequenceDiagram
         p-->>ctrl: return false
         ctrl-->>Player: 로그인 실패
     end
+```
