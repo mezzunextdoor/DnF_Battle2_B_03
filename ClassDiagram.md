@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     direction TB
 
@@ -104,3 +105,4 @@ classDiagram
     전투 ..> 캐릭터 : 아이템추가 호출
     전투 ..> 길드 : 캐릭터가입 호출
     인벤토리 ..> 아이템 : 아이템생성
+```
