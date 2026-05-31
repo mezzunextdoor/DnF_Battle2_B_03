@@ -1,12 +1,12 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class 전투 {
     private 플레이어 플레이어;
-    private List<길드> 길드목록 = new ArrayList<>();
+    private 길드 길드;
+
+    public 전투(길드 길드) {
+        this.길드 = 길드;
+    }
 
     public void 캐릭터생성(String 플레이어id, String 캐릭터명, String 직업, int 레벨) {
         플레이어 p = new 플레이어(플레이어id);
@@ -42,31 +42,21 @@ public class 전투 {
         return "데미지: " + 데미지 + " → " + 등급 + " 공격";
     }
 
-    public boolean 아이템획득(String 플레이어id, String 아이템명, String 아이템타입, int 아이템가치) {
-        if (플레이어 == null || !플레이어.플레이어체크(플레이어id)) return false;
+    public String 아이템획득(String 플레이어id, String 아이템명, String 아이템타입, int 아이템가치) {
+        if (플레이어 == null || !플레이어.플레이어체크(플레이어id)) return "로그인 실패";
         캐릭터 c = 플레이어.캐릭터가져오기();
-        if (c == null) return false;
-        return c.아이템추가(아이템명, 아이템타입, 아이템가치);
+        if (c == null) return "캐릭터 없음";
+        if (c.아이템추가(아이템명, 아이템타입, 아이템가치)) {
+            아이템 추가된아이템 = c.인벤토리.아이템리스트가져오기().get(c.인벤토리.현재크기() - 1);
+            return 추가된아이템 + " 획득 성공";
+        }
+        return "용량 초과";
     }
 
     public boolean 길드가입(String 플레이어id, String 길드명) {
         if (플레이어 == null || !플레이어.플레이어체크(플레이어id)) return false;
-        길드 대상길드 = 길드찾기(길드명);
-        if (대상길드 == null) return false;
-        if (대상길드.현재인원() >= 5) return false;
+        if (길드.현재인원() >= 길드.최대인원가져오기()) return false;
         캐릭터 c = 플레이어.캐릭터가져오기();
-        return 대상길드.캐릭터가입(c);
+        return 길드.캐릭터가입(c);
     }
-
-    public void 길드등록(길드 g) { 길드목록.add(g); }
-
-    private 길드 길드찾기(String 이름) {
-        for (길드 g : 길드목록) {
-            if (g.길드명.equals(이름)) return g;
-        }
-        return null;
-    }
-
-    public 플레이어 플레이어가져오기() { return 플레이어; }
-    public List<길드> 길드목록가져오기() { return 길드목록; }
 }

@@ -2,8 +2,8 @@ package game;
 
 public class Main {
     public static void main(String[] args) {
-        전투 전투 = new 전투();
-        전투.길드등록(new 길드("A길드"));
+        길드 길드 = new 길드("A길드");
+        전투 전투 = new 전투(길드);
 
         Create_Character_UI 캐릭터UI = new Create_Character_UI(전투, "hero", "홍길동", "전사", 10);
         Attack_Monster_UI   공격UI   = new Attack_Monster_UI(전투, "hero");

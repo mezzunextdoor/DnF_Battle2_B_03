@@ -16,8 +16,6 @@ public class Add_Item_UI {
     }
 
     public void 실행() {
-        boolean 결과 = 전투.아이템획득(플레이어id, 아이템명, 아이템타입, 아이템가치);
-        if (결과) System.out.println("아이템 획득 성공");
-        else System.out.println("아이템 획득 실패");
+        System.out.println(전투.아이템획득(플레이어id, 아이템명, 아이템타입, 아이템가치));
     }
 }
